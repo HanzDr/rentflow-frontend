@@ -33,7 +33,7 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
   return (
     <Card className="w-full max-w-sm px-4 py-8 shadow-md">
       <CardHeader>
-        <CardTitle className="text-yellow-400 text-3xl font-bold text-center">
+        <CardTitle className="text-black text-3xl font-bold text-center">
           RENTFLOW
         </CardTitle>
         <CardDescription className="text-center text-xs">
@@ -180,11 +180,7 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
       <CardFooter>
         <div className="flex flex-col w-full gap-2">
           <div className="flex flex-col w-full gap-2">
-            <Button
-              className="bg-yellow-400"
-              type="submit"
-              disabled={isSubmitting}
-            >
+            <Button className="bg-black" type="submit" disabled={isSubmitting}>
               Sign in
             </Button>
             <p className="text-center font-bold text-xs">or</p>
@@ -195,7 +191,7 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
 
           <p className="text-xs text-center">
             Don't have an account?{" "}
-            <span className="text-yellow-400 font-semibold hover:underline cursor-pointer">
+            <span className="text-black font-semibold hover:underline cursor-pointer">
               Sign up for free!
             </span>
           </p>
