@@ -8,7 +8,10 @@ const SignUpPage = () => {
   });
   const onSubmit = async () => {};
   return (
-    <div className="flex min-h-screen justify-center items-center">
+    <div
+      className="flex min-h-screen justify-center items-center bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/src/assets/background/sign-up.jpg')" }}
+    >
       <SignUpForm form={form} onSubmit={onSubmit} />
     </div>
   );

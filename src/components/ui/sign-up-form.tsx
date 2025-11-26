@@ -33,7 +33,7 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
   return (
     <Card className="w-full max-w-sm px-4 py-8 shadow-md">
       <CardHeader>
-        <CardTitle className="text-black text-3xl font-bold text-center">
+        <CardTitle className="text-brown text-3xl font-bold text-center">
           RENTFLOW
         </CardTitle>
         <CardDescription className="text-center text-xs">
