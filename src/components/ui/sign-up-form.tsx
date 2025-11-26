@@ -190,9 +190,9 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
           </div>
 
           <p className="text-xs text-center">
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <span className="text-black font-semibold hover:underline cursor-pointer">
-              Sign up for free!
+              Login
             </span>
           </p>
         </div>
