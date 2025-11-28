@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5174";
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5174/";
 
 interface ApiRequestOptions extends RequestInit {
   body?: any;
@@ -20,8 +20,13 @@ export async function apiRequest<TResponse>(
   });
 
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(text || `Request failed with status ${res.status}`);
+    const err = await res.json().catch(() => ({}));
+
+    const msg = Array.isArray(err.message)
+      ? err.message[0]
+      : err.message || "Something went wrong";
+
+    throw new Error(msg);
   }
 
   return res.json() as Promise<TResponse>;
