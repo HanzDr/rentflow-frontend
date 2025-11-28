@@ -17,6 +17,7 @@ import { PhoneInput } from "./phone-input";
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "./button";
 
+//Test
 interface SignUpFormProps {
   form: UseFormReturn<signUpFormData>;
   onSubmit: (signUpFormData: signUpFormData) => void;
