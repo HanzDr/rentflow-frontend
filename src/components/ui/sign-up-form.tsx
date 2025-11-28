@@ -17,6 +17,7 @@ import { PhoneInput } from "./phone-input";
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "./button";
 
+//Test
 interface SignUpFormProps {
   form: UseFormReturn<signUpFormData>;
   onSubmit: (signUpFormData: signUpFormData) => void;
@@ -40,12 +41,14 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
           Create your account
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)}>
+
+      {/* 👇 Move form to wrap content + footer  */}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <CardContent>
           <div className="flex flex-col gap-2">
             {/* First Name */}
             <div>
-              <Label htmlFor="email" className="text-sm font-semibold">
+              <Label htmlFor="firstName" className="text-sm font-semibold">
                 First Name
               </Label>
               <Input
@@ -61,9 +64,10 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
                 </p>
               )}
             </div>
+
             {/* Last Name */}
             <div>
-              <Label htmlFor="email" className="text-sm font-semibold">
+              <Label htmlFor="lastName" className="text-sm font-semibold">
                 Last Name
               </Label>
               <Input
@@ -73,9 +77,9 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
                 className="text-sm"
                 {...register("lastName")}
               />
-              {errors.firstName && (
+              {errors.lastName && (
                 <p className="text-red-500 text-xs">
-                  {errors.firstName.message}
+                  {errors.lastName.message}
                 </p>
               )}
             </div>
@@ -96,10 +100,11 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
                 <p className="text-red-500 text-xs">{errors.email.message}</p>
               )}
             </div>
+
             {/* Mobile Number */}
             <div>
               <Label htmlFor="number" className="text-sm font-semibold">
-                Phone Number
+                Mobile Number
               </Label>
               <Controller
                 name="mobileNumber"
@@ -107,8 +112,9 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
                 render={({ field }) => (
                   <PhoneInput
                     {...field}
+                    id="number"
                     defaultCountry="PH"
-                    placeholder="09XX XXX XXXX"
+                    placeholder="9XXXXXXXXX"
                     required
                   />
                 )}
@@ -138,13 +144,14 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
                 </p>
               )}
             </div>
-            {/* Re-Enter Password */}
+
+            {/* Confirm Password */}
             <div>
               <Label
                 htmlFor="confirmPassword"
                 className="text-sm font-semibold"
               >
-                Re-Enter your password
+                Confirm your password
               </Label>
               <Input
                 id="confirmPassword"
@@ -160,6 +167,7 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
               )}
             </div>
           </div>
+
           <div className="mt-4 flex justify-between">
             <div className="flex gap-2">
               <Checkbox id="remember-me" />
@@ -175,28 +183,36 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
               Forgot Password?
             </Link>
           </div>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <div className="flex flex-col w-full gap-2">
-          <div className="flex flex-col w-full gap-2">
-            <Button className="bg-black" type="submit" disabled={isSubmitting}>
-              Sign in
-            </Button>
-            <p className="text-center font-bold text-xs">or</p>
-            <Button className="bg-white border-2 text-black hover:bg-accent">
-              <FcGoogle /> Continue with google
-            </Button>
-          </div>
+        </CardContent>
 
-          <p className="text-xs text-center">
-            Already have an account?{" "}
-            <span className="text-black font-semibold hover:underline cursor-pointer">
-              Login
-            </span>
-          </p>
-        </div>
-      </CardFooter>
+        <CardFooter>
+          <div className="flex flex-col w-full gap-2">
+            <div className="flex flex-col w-full gap-2">
+              {/* 👇 now this is inside the form */}
+              <Button
+                className="bg-black"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Creating account..." : "Sign Up"}
+              </Button>
+
+              <p className="text-center font-bold text-xs">or</p>
+
+              <Button className="bg-white border-2 text-black hover:bg-accent">
+                <FcGoogle /> Continue with Google
+              </Button>
+            </div>
+
+            <p className="text-xs text-center">
+              Already have an account?{" "}
+              <span className="text-blue-600 font-semibold hover:underline cursor-pointer">
+                Login
+              </span>
+            </p>
+          </div>
+        </CardFooter>
+      </form>
     </Card>
   );
 };
