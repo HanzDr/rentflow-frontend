@@ -17,7 +17,6 @@ import { PhoneInput } from "./phone-input";
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "./button";
 
-//Test
 interface SignUpFormProps {
   form: UseFormReturn<signUpFormData>;
   onSubmit: (signUpFormData: signUpFormData) => void;
@@ -186,7 +185,7 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
         </CardContent>
 
         <CardFooter>
-          <div className="flex flex-col w-full gap-2">
+          <div className="flex flex-col w-full gap-2 mt-4">
             <div className="flex flex-col w-full gap-2">
               {/* 👇 now this is inside the form */}
               <Button
@@ -207,7 +206,7 @@ const SignUpForm = ({ form, onSubmit }: SignUpFormProps) => {
             <p className="text-xs text-center">
               Already have an account?{" "}
               <span className="text-blue-600 font-semibold hover:underline cursor-pointer">
-                Login
+                <Link to="/login">Login</Link>
               </span>
             </p>
           </div>
