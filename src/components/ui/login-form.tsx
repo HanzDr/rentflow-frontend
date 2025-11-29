@@ -12,7 +12,6 @@ import { Input } from "./input";
 import { Label } from "@radix-ui/react-label";
 import { Button } from "./button";
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 
 interface LoginFormProps {
   form: UseFormReturn<loginFormData>;
