@@ -1,9 +1,15 @@
 // src/components/protected-route.tsx
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useUser } from "@/hooks/useUser";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const ProtectedRoute = () => {
+export const ProtectedRoute = ({
+  children,
+  allowedRoles,
+}: {
+  children: React.ReactNode;
+  allowedRoles: string[];
+}) => {
   const { data, isLoading, error } = useUser();
 
   if (isLoading) {
@@ -17,9 +23,9 @@ export const ProtectedRoute = () => {
     );
   }
 
-  if (error || !data?.user) {
+  if (error || !data?.user || !allowedRoles.includes(data.user.role || "")) {
     return <Navigate to="/login" replace />;
   }
 
-  return <Outlet />;
+  return <>{children}</>;
 };

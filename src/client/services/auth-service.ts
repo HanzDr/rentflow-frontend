@@ -1,10 +1,6 @@
 import { type signUpFormData, type loginFormData } from "@/schema/auth-schema";
 import { apiRequest } from "@/lib/api-client";
 
-export interface GetUserResponse {
-  user: AuthUser;
-}
-
 export interface SignUpResponse {
   message: string;
   user: AuthUser;
@@ -73,11 +69,5 @@ export const logoutService = async () => {
 export const refreshTokenService = async () => {
   return apiRequest<LoginResponse>("auth/refresh", {
     method: "POST",
-  });
-};
-
-export const getUserService = async () => {
-  return apiRequest<GetUserResponse>("auth/me", {
-    method: "GET",
   });
 };

@@ -1,5 +1,5 @@
 // src/queries/user-query.ts
-import { getUserService } from "../services/auth-service";
+import { getUserService } from "../services/user-service";
 
 export const userQuery = () => ({
   queryKey: ["user", "me"],

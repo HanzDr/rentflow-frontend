@@ -6,6 +6,7 @@ import SignUpPage from "@/pages/sign-up-page";
 import LoginPage from "@/pages/login-page";
 import DashboardPage from "@/pages/dashboard-page";
 import { ProtectedRoute } from "@/components/ui/protected-route";
+import UserLayout from "@/layouts/user-layout";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
 
       // Protected routes
       {
-        element: <ProtectedRoute />,
+        element: (
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <UserLayout />
+          </ProtectedRoute>
+        ),
         children: [
           { path: "dashboard", element: <DashboardPage /> },
           { path: "test", element: <TestPage /> },

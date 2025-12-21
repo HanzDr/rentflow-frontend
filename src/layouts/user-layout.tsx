@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import NavigationBar from "@/components/ui/navigation-bar";
-const LandlordLayout = () => {
+const UserLayout = () => {
   return (
     <div>
       <NavigationBar />
@@ -11,4 +11,4 @@ const LandlordLayout = () => {
   );
 };
 
-export default LandlordLayout;
+export default UserLayout;
