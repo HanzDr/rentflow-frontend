@@ -18,7 +18,7 @@ const LoginPage = () => {
     ...loginMutation(),
     onSuccess: (data) => {
       toast.success(data.message || "Login successful!");
-      navigate("/dashboard"); // or wherever you want to redirect
+      navigate("/dashboard");
     },
     onError: (error: Error) => {
       toast.error(error.message || "Failed to log in");

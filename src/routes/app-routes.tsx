@@ -4,16 +4,28 @@ import LandingPage from "../pages/landing-page";
 import TestPage from "@/pages/test-page";
 import SignUpPage from "@/pages/sign-up-page";
 import LoginPage from "@/pages/login-page";
+import DashboardPage from "@/pages/dashboard-page";
+import { ProtectedRoute } from "@/components/ui/protected-route";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
+      // Public routes
       { index: true, element: <LandingPage /> },
-      { path: "test", element: <TestPage /> },
       { path: "sign-up", element: <SignUpPage /> },
       { path: "login", element: <LoginPage /> },
+
+      // Protected routes
+      {
+        element: <ProtectedRoute />,
+        children: [
+          { path: "dashboard", element: <DashboardPage /> },
+          { path: "test", element: <TestPage /> },
+          // Add more protected routes here
+        ],
+      },
     ],
   },
 ]);

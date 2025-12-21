@@ -11,6 +11,7 @@ export async function apiRequest<TResponse>(
   const { body, headers, ...rest } = options;
 
   const res = await fetch(`${API_BASE_URL}${path}`, {
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       ...(headers ?? {}),
